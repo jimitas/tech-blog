@@ -9,12 +9,14 @@ export default function AuthButton() {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [showConsentModal, setShowConsentModal] = useState(false)
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
 
   useEffect(() => {
     const getUser = async () => {
       const { data: { user } } = await supabase.auth.getUser()
       setUser(user)
       setLoading(false)
+      setIsInitialLoad(false)
     }
 
     getUser()
@@ -26,8 +28,11 @@ export default function AuthButton() {
 
         setUser(newUser)
 
-        // ログイン成功の通知
-        if (event === 'SIGNED_IN' && newUser) {
+        // 初回ロード中は通知しない（セッション復元時のアラートを防ぐ）
+        if (isInitialLoad) return
+
+        // ログイン成功の通知（実際に未ログイン状態からログインした場合のみ）
+        if (event === 'SIGNED_IN' && newUser && !prevUser) {
           const userName = newUser.user_metadata?.name || newUser.email || 'ユーザー'
           alert(`${userName}としてログインしました。`)
         }
@@ -40,7 +45,7 @@ export default function AuthButton() {
     )
 
     return () => subscription.unsubscribe()
-  }, [user])
+  }, [user, isInitialLoad])
 
   const handleSignInClick = () => {
     setShowConsentModal(true)
