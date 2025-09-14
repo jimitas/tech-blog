@@ -3,12 +3,10 @@
 import { useEffect, useState } from 'react'
 import { User } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase'
-import ConsentModal from './ConsentModal'
 
 export default function AuthButton() {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
-  const [showConsentModal, setShowConsentModal] = useState(false)
   const [isInitialLoad, setIsInitialLoad] = useState(true)
 
   useEffect(() => {
@@ -47,22 +45,13 @@ export default function AuthButton() {
     return () => subscription.unsubscribe()
   }, [user, isInitialLoad])
 
-  const handleSignInClick = () => {
-    setShowConsentModal(true)
-  }
-
-  const handleConsentAccept = async () => {
-    setShowConsentModal(false)
+  const handleSignInClick = async () => {
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}`
       }
     })
-  }
-
-  const handleConsentCancel = () => {
-    setShowConsentModal(false)
   }
 
   const handleSignOut = async () => {
@@ -97,12 +86,6 @@ export default function AuthButton() {
           </button>
         )}
       </div>
-
-      <ConsentModal
-        isOpen={showConsentModal}
-        onAccept={handleConsentAccept}
-        onCancel={handleConsentCancel}
-      />
     </>
   )
 }
