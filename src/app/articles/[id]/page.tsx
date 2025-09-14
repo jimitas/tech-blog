@@ -22,28 +22,29 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   }
 
   return (
-    <article className="max-w-4xl mx-auto">
-      <div className="mb-8">
+    <article className="max-w-4xl mx-auto px-4">
+      <div className="mb-6 sm:mb-8">
         <Link
           href="/"
-          className="text-blue-600 hover:text-blue-800 mb-4 inline-block"
+          className="text-blue-600 hover:text-blue-800 mb-4 inline-block text-sm sm:text-base"
         >
           ← 記事一覧に戻る
         </Link>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight">
           {article.title}
         </h1>
 
-        <div className="flex items-center gap-4 text-sm text-gray-600 mb-8">
+        {/* メタ情報 - モバイルでは縦並び */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600 mb-6 sm:mb-8">
           <span>
             by {article.author_name || 'Unknown User'}
           </span>
-          <span>•</span>
+          <span className="hidden sm:block">•</span>
           <time dateTime={article.created_at}>
             {new Date(article.created_at).toLocaleDateString('ja-JP', {
               year: 'numeric',
-              month: 'long',
+              month: 'short',
               day: 'numeric',
               hour: '2-digit',
               minute: '2-digit'
@@ -51,11 +52,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </time>
           {article.updated_at !== article.created_at && (
             <>
-              <span>•</span>
-              <span>
+              <span className="hidden sm:block">•</span>
+              <span className="text-xs sm:text-sm">
                 更新: {new Date(article.updated_at).toLocaleDateString('ja-JP', {
                   year: 'numeric',
-                  month: 'long',
+                  month: 'short',
                   day: 'numeric'
                 })}
               </span>
@@ -66,8 +67,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <ArticleActions articleId={article.id} authorId={article.author_id} />
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm border p-8">
-        <div className="prose prose-lg max-w-none">
+      <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6 lg:p-8">
+        <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none">
           <ReactMarkdown>{article.content}</ReactMarkdown>
         </div>
       </div>

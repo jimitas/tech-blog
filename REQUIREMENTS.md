@@ -89,9 +89,20 @@ Tech Blog Platform
 ### 3. UI/UX機能
 
 #### 3.1 レスポンシブデザイン
-- **デスクトップ対応** (1024px以上)
-- **タブレット対応** (768px - 1023px)
-- **スマートフォン対応** (320px - 767px)
+- **ブレークポイント設計**
+  - Mobile First: 320px〜 (デフォルト)
+  - Small: 640px以上 (sm:)
+  - Medium: 768px以上 (md:)
+  - Large: 1024px以上 (lg:)
+  - Extra Large: 1280px以上 (xl:)
+- **デバイス対応**
+  - スマートフォン (320px - 639px): 縦並びレイアウト、全幅ボタン
+  - タブレット (640px - 1023px): 適応的レイアウト
+  - デスクトップ (1024px以上): 横並びレイアウト、最適なスペース活用
+- **タッチデバイス最適化**
+  - ボタンのタップ領域最小44px
+  - スワイプジェスチャー対応準備
+  - ピンチズーム対応
 
 #### 3.2 ナビゲーション
 - **ヘッダー**
@@ -129,7 +140,8 @@ Tech Blog Platform
 #### フロントエンド
 - **フレームワーク**: Next.js 15 (App Router)
 - **言語**: TypeScript
-- **スタイリング**: Tailwind CSS
+- **スタイリング**: Tailwind CSS (レスポンシブ対応)
+- **レスポンシブ手法**: Mobile-First CSS、Flexbox、CSS Grid
 - **コンポーネント**: React Server Components / Client Components
 
 #### バックエンド

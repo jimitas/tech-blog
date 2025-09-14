@@ -42,7 +42,7 @@ export default function ArticleActions({ articleId, authorId }: ArticleActionsPr
   }
 
   return (
-    <div className="flex gap-4 mb-8">
+    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6 sm:mb-8">
       <DeleteButton articleId={articleId} authorId={authorId} />
     </div>
   )

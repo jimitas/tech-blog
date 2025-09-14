@@ -43,7 +43,7 @@ export default function NewArticle() {
 
   if (loading) {
     return (
-      <div className="max-w-4xl mx-auto text-center py-8">
+      <div className="max-w-4xl mx-auto px-4 text-center py-8">
         <p>認証確認中...</p>
       </div>
     )
@@ -96,10 +96,10 @@ export default function NewArticle() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">新しい記事を書く</h1>
+    <div className="max-w-4xl mx-auto px-4">
+      <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">新しい記事を書く</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
             タイトル
@@ -109,7 +109,7 @@ export default function NewArticle() {
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
             placeholder="記事のタイトルを入力してください"
             disabled={isSubmitting}
           />
@@ -123,25 +123,28 @@ export default function NewArticle() {
             id="content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            rows={20}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
+            rows={15}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-xs sm:text-sm resize-y min-h-[300px]"
             placeholder="Markdown形式で記事の内容を入力してください"
             disabled={isSubmitting}
           />
+          <p className="text-xs text-gray-500 mt-1">
+            モバイルでの入力を考慮して、テキストエリアは縦方向にリサイズ可能です
+          </p>
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <button
             type="submit"
             disabled={isSubmitting}
-            className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full sm:w-auto px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
           >
             {isSubmitting ? '投稿中...' : '記事を投稿'}
           </button>
           <button
             type="button"
             onClick={() => router.back()}
-            className="px-6 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+            className="w-full sm:w-auto px-6 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 text-sm sm:text-base"
           >
             キャンセル
           </button>
