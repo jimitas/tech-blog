@@ -32,7 +32,7 @@ export default function NewArticle() {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
         if (!session?.user) {
-          alert('ログインが必要です。')
+          // AuthButtonで「ログアウトしました」が表示されるため、ここではアラート不要
           router.push('/')
         }
       }
