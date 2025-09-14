@@ -1,163 +1,210 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tech Blog Platform
 
-## Getting Started
+Next.js + Supabase + Vercelで構築したシンプルな技術記事投稿プラットフォーム
 
-First, run the development server:
+![Tech Blog Platform](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
+![Supabase](https://img.shields.io/badge/Supabase-Database-green?logo=supabase)
+![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?logo=vercel)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue?logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?logo=tailwindcss)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Demo
+
+[ライブデモを見る](https://tech-blog-your-project.vercel.app) （デプロイ後にURLを更新）
+
+## 📖 概要
+
+このプロジェクトは、初心者がAIコーディングを学習できるよう設計された技術記事投稿プラットフォームです。Zen/Qiitaのようなシンプルなインターフェースで、記事の投稿・編集・削除が可能です。
+
+### 主な特徴
+
+- 🔐 **Google認証** - ワンクリックでログイン
+- ✏️ **Markdown対応** - 技術記事に最適
+- 📱 **レスポンシブ** - モバイルファーストデザイン
+- ⚡ **高速** - Next.js App Routerによる最適化
+- 🔒 **セキュア** - Supabase RLSによる適切なアクセス制御
+
+## 🛠 技術スタック
+
+| 技術 | 用途 | バージョン |
+|------|------|-----------|
+| [Next.js](https://nextjs.org/) | フロントエンドフレームワーク | 15.x |
+| [Supabase](https://supabase.com/) | バックエンド・データベース | Latest |
+| [TypeScript](https://www.typescriptlang.org/) | 型安全性 | 5.x |
+| [Tailwind CSS](https://tailwindcss.com/) | スタイリング | 3.x |
+| [React Markdown](https://github.com/remarkjs/react-markdown) | Markdownレンダリング | Latest |
+| [Vercel](https://vercel.com/) | ホスティング | - |
+
+## 🎯 機能
+
+### ✅ 実装済み機能
+
+- **認証システム**
+  - Googleアカウントでのログイン/ログアウト
+  - ユーザーセッション管理
+- **記事管理**
+  - 記事一覧表示（時系列順）
+  - 記事詳細表示
+  - 記事作成（Markdownエディタ）
+  - 記事編集・削除（作者のみ）
+- **UI/UX**
+  - レスポンシブデザイン
+  - ダークモード対応準備
+  - アクセシビリティ対応
+- **法的ページ**
+  - プライバシーポリシー
+  - 利用規約
+
+### 🔮 今後の拡張予定
+
+- タグ機能
+- 検索機能
+- いいね・ブックマーク機能
+- コメント機能
+- 画像アップロード
+- ユーザープロフィール詳細
+
+## 🚦 はじめ方
+
+### 前提条件
+
+- Node.js 18.0以上
+- npm または yarn
+- Gitアカウント
+- Supabaseアカウント
+- Vercelアカウント（デプロイ時）
+
+### クイックスタート
+
+1. **リポジトリのクローン**
+   ```bash
+   git clone https://github.com/yourusername/tech-blog.git
+   cd tech-blog
+   ```
+
+2. **依存関係のインストール**
+   ```bash
+   npm install
+   ```
+
+3. **環境変数の設定**
+   ```bash
+   cp .env.example .env.local
+   # .env.localファイルを編集してSupabase認証情報を設定
+   ```
+
+4. **開発サーバーの起動**
+   ```bash
+   npm run dev
+   ```
+
+5. **ブラウザでアクセス**
+   [http://localhost:3000](http://localhost:3000)
+
+## 📋 詳細セットアップ
+
+初回セットアップや本番デプロイについては、以下のドキュメントを参照してください：
+
+- **[SETUP_GUIDE.md](./SETUP_GUIDE.md)** - 詳細な環境構築手順
+- **[REQUIREMENTS.md](./REQUIREMENTS.md)** - 機能仕様と技術要件
+
+## 🏗 プロジェクト構造
+
+```
+tech-blog/
+├── src/
+│   ├── app/                    # App Router（Next.js 13+）
+│   │   ├── (pages)/           # ページコンポーネント
+│   │   │   ├── articles/      # 記事関連ページ
+│   │   │   ├── privacy/       # プライバシーポリシー
+│   │   │   └── terms/         # 利用規約
+│   │   ├── globals.css        # グローバルスタイル
+│   │   ├── layout.tsx         # ルートレイアウト
+│   │   └── page.tsx          # ホームページ
+│   ├── components/            # 再利用可能コンポーネント
+│   │   ├── articles/         # 記事関連コンポーネント
+│   │   ├── auth/             # 認証関連コンポーネント
+│   │   └── layout/           # レイアウトコンポーネント
+│   └── lib/                  # ユーティリティ・設定
+│       └── supabase.ts       # Supabaseクライアント設定
+├── public/                   # 静的ファイル
+├── database.sql             # データベーススキーマ
+├── SETUP_GUIDE.md          # セットアップガイド
+├── REQUIREMENTS.md         # 要件定義書
+└── README.md              # このファイル
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💻 開発
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 利用可能なコマンド
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| コマンド | 説明 |
+|---------|------|
+| `npm run dev` | 開発サーバー起動 |
+| `npm run build` | 本番ビルド |
+| `npm run start` | 本番サーバー起動 |
+| `npm run lint` | ESLintでコード検査 |
+| `npm run type-check` | TypeScript型検査 |
 
-## Learn More
+### 開発ガイドライン
 
-To learn more about Next.js, take a look at the following resources:
+- **コンポーネント設計**: 再利用性を重視したコンポーネント分割
+- **型安全性**: TypeScriptの型を活用した堅牢な実装
+- **アクセシビリティ**: WCAG 2.1 AA準拠を目指す
+- **パフォーマンス**: Next.jsの最適化機能を活用
+- **セキュリティ**: Supabase RLSによる適切なアクセス制御
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔒 セキュリティ
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **認証**: Supabase Authによる安全な認証
+- **認可**: Row Level Security (RLS) によるデータアクセス制御
+- **環境変数**: 秘匿情報の適切な管理
+- **HTTPS**: 本番環境でのSSL/TLS暗号化
 
-## Deploy on Vercel
+## 🚀 デプロイ
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Vercelへのデプロイ
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. [Vercel](https://vercel.com)にログイン
+2. GitHubリポジトリを連携
+3. 環境変数を設定
+4. デプロイ実行
 
-## Legal Pages
+詳細な手順は[SETUP_GUIDE.md](./SETUP_GUIDE.md)を参照してください。
 
-This project includes privacy policy and terms of service pages to ensure compliance with legal requirements.
+## 🤝 コントリビューション
 
-### Why Privacy Policy and Terms of Service are Needed
+プルリクエストや Issue の作成を歓迎します。大きな変更を行う場合は、まず Issue で相談してください。
 
-For any web application that collects user data or provides services, having proper legal pages is essential:
+### 開発の流れ
 
-- **Privacy Policy**: Required by laws like GDPR, CCPA, and other privacy regulations when collecting personal information
-- **Terms of Service**: Establishes the rules and guidelines for using your service, protecting both users and the service provider
-- **User Trust**: Professional legal pages build user confidence and trust in your platform
-- **Platform Requirements**: Many hosting platforms, authentication providers, and third-party services require these pages
+1. このリポジトリをフォーク
+2. 機能ブランチを作成 (`git checkout -b feature/amazing-feature`)
+3. 変更をコミット (`git commit -m 'Add some amazing feature'`)
+4. ブランチにプッシュ (`git push origin feature/amazing-feature`)
+5. プルリクエストを作成
 
-### Implementation Steps
+## 📄 ライセンス
 
-#### 1. Create Privacy Policy Page
+このプロジェクトは MIT ライセンスの下で公開されています。詳細は [LICENSE](./LICENSE) ファイルを参照してください。
 
-Create `src/app/privacy/page.tsx`:
+## 🙋‍♂️ サポート
 
-```tsx
-import Link from 'next/link'
+質問や問題がある場合は、以下の方法でお気軽にお問い合わせください：
 
-export default function PrivacyPolicy() {
-  return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="prose prose-lg mx-auto">
-        <h1 className="text-3xl font-bold mb-8">プライバシーポリシー</h1>
+- [Issues](https://github.com/yourusername/tech-blog/issues) - バグ報告や機能要望
+- [Discussions](https://github.com/yourusername/tech-blog/discussions) - 一般的な質問や議論
 
-        {/* Add disclaimer for test sites */}
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
-          <p className="text-sm text-yellow-800">
-            <strong>注意：</strong>これはテスト用のサイトです。実際のサービス運用時には法律専門家にご相談ください。
-          </p>
-        </div>
+## 📚 学習リソース
 
-        {/* Add your privacy policy content here */}
+このプロジェクトを通じて学べる技術：
 
-        {/* Navigation back to home */}
-        <div className="mt-8 text-center">
-          <Link
-            href="/"
-            className="inline-block bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
-          >
-            ホームに戻る
-          </Link>
-        </div>
-      </div>
-    </div>
-  )
-}
-```
+- **Next.js App Router** - 最新のReactフレームワーク
+- **Supabase** - Firebase代替のオープンソースBaaS
+- **TypeScript** - 型安全なJavaScript開発
+- **Tailwind CSS** - ユーティリティファーストCSS
+- **Vercel** - 現代的なWebアプリケーションのデプロイ
 
-#### 2. Create Terms of Service Page
+---
 
-Create `src/app/terms/page.tsx`:
-
-```tsx
-import Link from 'next/link'
-
-export default function TermsOfService() {
-  return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="prose prose-lg mx-auto">
-        <h1 className="text-3xl font-bold mb-8">利用規約</h1>
-
-        {/* Add disclaimer for test sites */}
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
-          <p className="text-sm text-yellow-800">
-            <strong>注意：</strong>これはテスト用のサイトです。実際のサービス運用時には法律専門家にご相談ください。
-          </p>
-        </div>
-
-        {/* Add your terms of service content here */}
-
-        {/* Navigation back to home */}
-        <div className="mt-8 text-center">
-          <Link
-            href="/"
-            className="inline-block bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
-          >
-            ホームに戻る
-          </Link>
-        </div>
-      </div>
-    </div>
-  )
-}
-```
-
-#### 3. Add Links in Footer or Navigation
-
-Add links to these pages in your main layout or footer:
-
-```tsx
-<footer className="bg-gray-800 text-white py-8">
-  <div className="max-w-4xl mx-auto px-4 text-center">
-    <div className="flex justify-center space-x-6">
-      <Link href="/privacy" className="hover:text-blue-300">
-        プライバシーポリシー
-      </Link>
-      <Link href="/terms" className="hover:text-blue-300">
-        利用規約
-      </Link>
-    </div>
-  </div>
-</footer>
-```
-
-### Important Notes
-
-- **Legal Disclaimer**: Always include a disclaimer for test/development sites
-- **Professional Review**: For production applications, have legal professionals review your policies
-- **Regular Updates**: Keep policies updated as your service evolves
-- **Clear Language**: Write policies in clear, understandable language for your users
-- **Accessibility**: Ensure pages are accessible and properly styled
-- **Mobile Responsive**: Test that pages work well on all device sizes
-
-### Styling Considerations
-
-- Use Tailwind's `prose` class for readable text formatting
-- Add proper spacing and typography hierarchy
-- Include visual indicators for important sections (like warnings)
-- Ensure buttons have proper contrast and hover states
-- Test the pages in both light and dark themes if applicable
-
-# Updated home button styles
+⭐ このプロジェクトが役に立った場合は、スターをつけていただけると嬉しいです！
