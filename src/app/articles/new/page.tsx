@@ -168,7 +168,7 @@ export default function NewArticle() {
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   rows={15}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-xs sm:text-sm resize-y min-h-[400px] transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm sm:text-base resize-y min-h-[400px] transition-all text-gray-900"
                   placeholder="# 記事タイトル
 
 ## はじめに
