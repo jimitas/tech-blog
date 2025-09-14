@@ -3,10 +3,12 @@
 import { useEffect, useState } from 'react'
 import { User } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase'
+import ConsentModal from './ConsentModal'
 
 export default function AuthButton() {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
+  const [showConsentModal, setShowConsentModal] = useState(false)
 
   useEffect(() => {
     const getUser = async () => {
@@ -40,13 +42,22 @@ export default function AuthButton() {
     return () => subscription.unsubscribe()
   }, [user])
 
-  const handleSignIn = async () => {
+  const handleSignInClick = () => {
+    setShowConsentModal(true)
+  }
+
+  const handleConsentAccept = async () => {
+    setShowConsentModal(false)
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}`
       }
     })
+  }
+
+  const handleConsentCancel = () => {
+    setShowConsentModal(false)
   }
 
   const handleSignOut = async () => {
@@ -58,27 +69,35 @@ export default function AuthButton() {
   }
 
   return (
-    <div className="flex items-center gap-4">
-      {user ? (
-        <>
-          <span className="text-sm text-gray-700">
-            {user.user_metadata?.name || user.email}
-          </span>
+    <>
+      <div className="flex items-center gap-4">
+        {user ? (
+          <>
+            <span className="text-sm text-gray-700">
+              {user.user_metadata?.name || user.email}
+            </span>
+            <button
+              onClick={handleSignOut}
+              className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+            >
+              ログアウト
+            </button>
+          </>
+        ) : (
           <button
-            onClick={handleSignOut}
-            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+            onClick={handleSignInClick}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
           >
-            ログアウト
+            Googleでログイン
           </button>
-        </>
-      ) : (
-        <button
-          onClick={handleSignIn}
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-        >
-          Googleでログイン
-        </button>
-      )}
-    </div>
+        )}
+      </div>
+
+      <ConsentModal
+        isOpen={showConsentModal}
+        onAccept={handleConsentAccept}
+        onCancel={handleConsentCancel}
+      />
+    </>
   )
 }
