@@ -50,9 +50,10 @@ Supabase Dashboard → SQL Editor → New Query で以下を実行：
 ```sql
 CREATE TABLE articles (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  title VARCHAR NOT NULL,
+  title TEXT NOT NULL,
   content TEXT NOT NULL,
-  author_id UUID REFERENCES auth.users(id),
+  author_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+  author_name TEXT NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
