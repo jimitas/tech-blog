@@ -130,7 +130,7 @@ export default function NewArticle() {
                 id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base font-medium text-gray-900 transition-all"
                 placeholder="魅力的なタイトルを入力してください"
                 disabled={isSubmitting}
               />
@@ -148,7 +148,7 @@ export default function NewArticle() {
                 id="authorName"
                 value={authorName}
                 onChange={(e) => setAuthorName(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base font-medium text-gray-900 transition-all"
                 placeholder="読者に表示される著者名"
                 disabled={isSubmitting}
               />
@@ -168,7 +168,7 @@ export default function NewArticle() {
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   rows={15}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm sm:text-base resize-y min-h-[400px] transition-all text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-base font-medium text-gray-900 resize-y min-h-[400px] transition-all"
                   placeholder="# 記事タイトル
 
 ## はじめに
