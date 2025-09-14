@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 export default function TermsOfService() {
   return (
@@ -104,12 +104,14 @@ export default function TermsOfService() {
         <div className="mt-8 text-center">
           <Link
             href="/"
-            className="inline-block bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
           >
-            ホームに戻る
+            <div className="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              ホームに戻る
+            </div>
           </Link>
         </div>
       </div>
     </div>
-  )
+  );
 }
