@@ -104,7 +104,7 @@ export default function TermsOfService() {
         <div className="mt-8 text-center">
           <Link
             href="/"
-            className="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors"
+            className="inline-block bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
           >
             ホームに戻る
           </Link>
